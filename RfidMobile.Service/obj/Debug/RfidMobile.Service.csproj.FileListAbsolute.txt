@@ -1,0 +1,8 @@
+f:\Projects\RfidMobile\RfidMobile.Service\bin\Debug\RfidMobile.Service.dll
+f:\Projects\RfidMobile\RfidMobile.Service\bin\Debug\RfidMobile.Service.pdb
+f:\Projects\RfidMobile\RfidMobile.Service\bin\Debug\Newtonsoft.Json.Compact.dll
+f:\Projects\RfidMobile\RfidMobile.Service\bin\Debug\Symbol.RFID3.Device.dll
+f:\Projects\RfidMobile\RfidMobile.Service\bin\Debug\Symbol.RFID3.Device.xml
+f:\Projects\RfidMobile\RfidMobile.Service\obj\Debug\ResolveAssemblyReference.cache
+f:\Projects\RfidMobile\RfidMobile.Service\obj\Debug\RfidMobile.Service.dll
+f:\Projects\RfidMobile\RfidMobile.Service\obj\Debug\RfidMobile.Service.pdb

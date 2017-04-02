@@ -1,0 +1,17 @@
+f:\Projects\RfidMobile\RfidMobile.UI\bin\Debug\RfidMobile.UI.exe
+f:\Projects\RfidMobile\RfidMobile.UI\bin\Debug\RfidMobile.UI.pdb
+f:\Projects\RfidMobile\RfidMobile.UI\bin\Debug\RfidMobile.Service.dll
+f:\Projects\RfidMobile\RfidMobile.UI\bin\Debug\Symbol.RFID3.Device.dll
+f:\Projects\RfidMobile\RfidMobile.UI\bin\Debug\Newtonsoft.Json.Compact.dll
+f:\Projects\RfidMobile\RfidMobile.UI\bin\Debug\Symbol.RFID3.Device.xml
+f:\Projects\RfidMobile\RfidMobile.UI\bin\Debug\RfidMobile.Service.pdb
+f:\Projects\RfidMobile\RfidMobile.UI\obj\Debug\ResolveAssemblyReference.cache
+f:\Projects\RfidMobile\RfidMobile.UI\obj\Debug\RfidMobile.UI.ConfigControl.resources
+f:\Projects\RfidMobile\RfidMobile.UI\obj\Debug\RfidMobile.UI.LogControl.resources
+f:\Projects\RfidMobile\RfidMobile.UI\obj\Debug\RfidMobile.UI.MainForm.resources
+f:\Projects\RfidMobile\RfidMobile.UI\obj\Debug\RfidMobile.UI.Properties.Resources.resources
+f:\Projects\RfidMobile\RfidMobile.UI\obj\Debug\RfidMobile.UI.ReaderControl.resources
+f:\Projects\RfidMobile\RfidMobile.UI\obj\Debug\RfidMobile.UI.StockInControl.resources
+f:\Projects\RfidMobile\RfidMobile.UI\obj\Debug\RfidMobile.UI.csproj.GenerateResource.Cache
+f:\Projects\RfidMobile\RfidMobile.UI\obj\Debug\RfidMobile.UI.exe
+f:\Projects\RfidMobile\RfidMobile.UI\obj\Debug\RfidMobile.UI.pdb
