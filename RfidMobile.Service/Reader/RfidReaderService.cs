@@ -78,6 +78,7 @@ namespace RfidMobile.Service.Reader
                     rfidReader.Connect();
                     IsConnect = rfidReader.IsConnected;
 
+                    // 1、阅读器事件配置
                     rfidReader.Events.NotifyInventoryStartEvent = true;
                     rfidReader.Events.NotifyAccessStartEvent = true;
                     rfidReader.Events.NotifyAccessStopEvent = true;
@@ -88,35 +89,38 @@ namespace RfidMobile.Service.Reader
                     rfidReader.Events.NotifyGPIEvent = true;
                     rfidReader.Events.NotifyReaderDisconnectEvent = true;
                     rfidReader.Events.NotifyReaderExceptionEvent = true;
+
                     // 不通知tag读到事件，改由扫描按钮松开时，获取读到的标签信息
                     rfidReader.Events.AttachTagDataWithReadEvent = false;
 
                     // 注册扫描枪状态变化事件
                     rfidReader.Events.StatusNotify += new Events.StatusNotifyHandler(Events_StatusNotify);
 
-                    // rssi值过滤配置，此处取最大最小值，因此没有过滤作用
+                    // 2、rssi值过滤配置，此处取最大最小值，因此没有过滤作用
                     PostFilter posFilter = new PostFilter();
                     posFilter.UseRSSIRangeFilter = true;
                     posFilter.RssiRangeFilter.MatchRange = MATCH_RANGE.WITHIN_RANGE;
                     posFilter.RssiRangeFilter.PeakRSSILowerLimit = -128;
                     posFilter.RssiRangeFilter.PeakRSSIUpperLimit = 127;
 
-                    // 扫描按钮信息配置
+                    // 3、扫描按钮信息配置
                     TriggerInfo triggerInfo = new TriggerInfo();
+
                     // 此参数配置为0，扫描枪在接收到扫描按钮松开事件后，停止扫描
                     triggerInfo.TagReportTrigger = 0;
 
                     triggerInfo.StartTrigger.Type = START_TRIGGER_TYPE.START_TRIGGER_TYPE_HANDHELD;
                     triggerInfo.StartTrigger.Handheld.HandheldEvent = HANDHELD_TRIGGER_EVENT_TYPE.HANDHELD_TRIGGER_PRESSED;
+
                     // 当扫描按钮松开后，经过一段时间出发扫描枪停止扫描事件（不过这里超时时间设为0，没有起到延迟触发事件的效果）
                     triggerInfo.StopTrigger.Type = STOP_TRIGGER_TYPE.STOP_TRIGGER_TYPE_HANDHELD_WITH_TIMEOUT;
                     triggerInfo.StopTrigger.Handheld.Timeout = 0;
 
                     triggerInfo.StopTrigger.Handheld.HandheldEvent = HANDHELD_TRIGGER_EVENT_TYPE.HANDHELD_TRIGGER_RELEASED;
 
+                    // 4、执行1、2、3的配置
                     rfidReader.Actions.Inventory.Perform(posFilter, triggerInfo, null);
                 }
-
             }
             catch (Exception ex)
             {

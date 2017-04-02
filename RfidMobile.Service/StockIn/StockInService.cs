@@ -42,9 +42,8 @@ namespace RfidMobile.Service.StockIn
             {
                 string url = "http://192.168.0.222:50000/Api/StockIn";
 
-                string text = HttpService.GetJsonByUrl(url);
-
-                stockIn = JsonConvert.DeserializeObject<StockIn>(text);
+                string json = HttpService.GetJsonByUrl(url);
+                stockIn = JsonConvert.DeserializeObject<StockIn>(json);
 
             }
             catch (Exception ex) {

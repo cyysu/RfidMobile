@@ -40,14 +40,15 @@ namespace RfidMobile.UI
                 // 设置log显示的等级
                 LogService.Level = (LogType)Enum.Parse(typeof(LogType), config.LogLevel, true);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 LogService.Error("main", ex.Message);
             }
         }
 
         #region show user control
 
-        private void AddReaderControl(IList<Product> products)
+        private void AddReaderControl(IList<ReaderProductViewModel> products)
         {
             if (readerControl == null)
             {
@@ -60,11 +61,13 @@ namespace RfidMobile.UI
             }
         }
 
-        private void AddReaderControl() {
+        private void AddReaderControl()
+        {
             AddReaderControl(null);
         }
 
-        private void AddLogControl() {
+        private void AddLogControl()
+        {
             if (logControl == null)
             {
                 logControl = new LogControl();
@@ -74,9 +77,8 @@ namespace RfidMobile.UI
             }
         }
 
-
-
-        private void AddStockInControl() {
+        private void AddStockInControl()
+        {
             if (stockInControl == null)
             {
                 stockInControl = new StockInControl();
@@ -95,11 +97,16 @@ namespace RfidMobile.UI
             StockIn stockIn = e.StockIn;
             IList<Product> products = ProductService.GetProductsBuStockIn(stockIn);
 
-            AddReaderControl(products);
+            // 将products转成readerControl需要的格式
+            IList<ReaderProductViewModel> productViewModels = ReaderProductViewModel.GetByProducts(products);
+
+            AddReaderControl(productViewModels);
         }
 
-        private void AddConfigControl() {
-            if (configControl == null) {
+        private void AddConfigControl()
+        {
+            if (configControl == null)
+            {
                 configControl = new ConfigControl();
                 configControl.Dock = DockStyle.Fill;
                 configControl.Name = "config";
@@ -110,11 +117,12 @@ namespace RfidMobile.UI
         private void RemoveAllControls()
         {
             Controls.Remove(readerControl);
-            if (readerControl != null) {
+            if (readerControl != null)
+            {
                 readerControl.Stop();
             }
             readerControl = null;
-            
+
             Controls.Remove(logControl);
             logControl = null;
 

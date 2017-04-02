@@ -20,13 +20,12 @@ namespace RfidMobile.UI
         private static IRfidReaderService rfidReaderService;
         private IList<ReaderProductViewModel> products;
 
-        public ReaderControl(RfidMobile.Service.Util.Config config, IList<Product> products)
+        public ReaderControl(RfidMobile.Service.Util.Config config, IList<ReaderProductViewModel> products)
         {
             InitializeComponent();
 
             if (products != null)
             {
-                // 重新配置data gird的样式
                 DataGridTableStyle tableStyle = new DataGridTableStyle();
                 tableStyle.MappingName = products.GetType().Name;
 
@@ -54,6 +53,7 @@ namespace RfidMobile.UI
                 serialNumberColumnStyle.HeaderText = "序号";
                 tableStyle.GridColumnStyles.Add(serialNumberColumnStyle);
 
+                // 重新配置data gird的样式
                 dgProducts.TableStyles.Clear();
                 dgProducts.TableStyles.Add(tableStyle);
 
@@ -63,9 +63,7 @@ namespace RfidMobile.UI
             }
 
             // 初始化reader服务
-
             rfidReaderService = new RfidReaderService(config.Host, config.Port);
-           
             rfidReaderService.IsConnectChanged += new EventHandler<IsConnectChangedEventArgs>(readerService_IsConnectChanged);
             rfidReaderService.TagDataReceived += new EventHandler<TagDataReceivedEventArgs>(readerService_TagDataReceived);
             rfidReaderService.MessageReceived += new EventHandler<MessageReceivedEventArgs>(readerService_MessageReceived);
@@ -82,16 +80,14 @@ namespace RfidMobile.UI
             rfidReaderService.Stop();
         }
 
-        private void UpdateDgProducts(IList<ReaderProductViewModel> products)
+        private void SetProducts(IList<ReaderProductViewModel> products)
         {
             dgProducts.DataSource = products;
 
-            dgProducts.DataSource = this.products;
-
             // 让已经读到的标签，处于选中状态，所以会显示绿色
-            for (int i = 0; i < this.products.Count; i++)
+            for (int i = 0; i < products.Count; i++)
             {
-                ReaderProductViewModel product = this.products[i];
+                ReaderProductViewModel product = products[i];
                 if (product.IsRead == true)
                 {
                     dgProducts.Select(i);
@@ -101,12 +97,6 @@ namespace RfidMobile.UI
                     dgProducts.UnSelect(i);
                 }
             }
-        }
-
-        private void SetProducts(IList<Product> products)
-        {
-            this.products = ReaderProductViewModel.GetProducts(products);
-            UpdateDgProducts(this.products);
         }
 
         private void readerService_MessageReceived(object sender, MessageReceivedEventArgs e)
@@ -130,6 +120,7 @@ namespace RfidMobile.UI
                     {
                         // tag已经读取到，配置isRead属性为true
                         IList<ReaderProductViewModel> readProducts = products.Where(p => p.TagId == item.TagID).ToList();
+
                         if (readProducts != null && readProducts.Count != 0)
                         {
                             ReaderProductViewModel product = readProducts.First();
@@ -140,13 +131,13 @@ namespace RfidMobile.UI
                         }
                     }
                 }
+
                 // 让没有读取到的tag，显示在前面
                 if (products != null)
                 {
                     products = products.OrderBy(p => p.IsRead).ToList();
-                    UpdateDgProducts(products);
+                    SetProducts(products);
                 }
-
 
                 txtMessage.Text = text;
                 labTotalRead.Text = "读" + products.Where(p => p.IsRead).Count() + "共" + products.Count();

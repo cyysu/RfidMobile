@@ -80,6 +80,7 @@
     <Compile Include="StockIn\StockIn.cs" />
     <Compile Include="StockIn\StockInDetail.cs" />
     <Compile Include="StockIn\StockInService.cs" />
+    <Compile Include="Util\ReadOnly.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
   <ProjectExtensions>

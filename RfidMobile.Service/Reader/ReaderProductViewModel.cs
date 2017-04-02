@@ -35,7 +35,7 @@ namespace RfidMobile.Service.Reader
         /// </summary>
         /// <param name="products"></param>
         /// <returns></returns>
-        public static IList<ReaderProductViewModel> GetProducts(IList<RfidMobile.Service.Product.Product> products)
+        public static IList<ReaderProductViewModel> GetByProducts(IList<RfidMobile.Service.Product.Product> products)
         {
             IList<ReaderProductViewModel> newProducts = new List<ReaderProductViewModel>();
             if (products != null)

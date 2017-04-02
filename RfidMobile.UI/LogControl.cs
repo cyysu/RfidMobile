@@ -28,7 +28,7 @@ namespace RfidMobile.UI
         {
             int row = dgLogs.CurrentCell.RowNumber;
             
-            txtLog.Text = logs[row].DateTime.ToString("HH:mm:ss")+ "\r\n"+ logs[row].Message.ToString();
+            txtLog.Text = logs[row].DateTime.ToString(ReadOnly.TimeFormat)+ "\r\n"+ logs[row].Message.ToString();
         }
 
         private void getLogs()

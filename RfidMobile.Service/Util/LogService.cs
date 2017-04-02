@@ -16,7 +16,7 @@ namespace RfidMobile.Service.Util
     /// </remarks>
     public class LogService
     {
-        private static string FileName{get{return "log"+ DateTime.Now.ToString("yyyy-MM-dd") + ".txt";}}
+        private static string FileName{get{return GetLogFileName(DateTime.Now);}}
 
         public static LogType Level = LogType.Info;
 
@@ -70,18 +70,25 @@ namespace RfidMobile.Service.Util
         }
 
         public static IList<Log> Read(DateTime date) {
-            string fileName = "log" + date.ToString("yyyy-MM-dd") + ".txt";
+            string fileName = GetLogFileName(date);
             return Read(fileName);
         }
 
-        public static IList<Log> Read(string fileName) {
+        public static IList<Log> Read()
+        {
+            return Read(FileName);
+        }
+
+        public static IList<Log> Read(string fileName)
+        {
             IList<Log> logs = new List<Log>();
             try
             {
                 using (StreamReader sr = new StreamReader(fileName, Encoding.UTF8))
                 {
                     string text = "";
-                    while((text =sr.ReadLine()) != null){
+                    while ((text = sr.ReadLine()) != null)
+                    {
                         Log log = JsonConvert.DeserializeObject<Log>(text);
                         if (log.Type >= Level)
                         {
@@ -92,15 +99,15 @@ namespace RfidMobile.Service.Util
                 }
             }
             // 文件读取失败，则程序返回长度为0的logs，故不处理异常
-            catch (Exception ex) { 
-            
+            catch (Exception ex)
+            {
+
             }
             return logs;
         }
 
-        public static IList<Log> Read()
-        {
-            return Read(FileName);
+        private static string GetLogFileName(DateTime date) {
+            return "log" + date.ToString(ReadOnly.DateFormat) + ".txt";
         }
     }
 }

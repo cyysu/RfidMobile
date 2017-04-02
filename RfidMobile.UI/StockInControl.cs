@@ -18,7 +18,6 @@ namespace RfidMobile.UI
     {
         private StockIn stockIn;
 
-
         public event EventHandler<ReadTagsClickedEventArgs> ReadTagsClicked;
 
         public StockInControl()
@@ -26,7 +25,6 @@ namespace RfidMobile.UI
             InitializeComponent();
             txtSerialNumber.Focus();
         }
-
 
         protected void OnReadTagsClicked(ReadTagsClickedEventArgs e) {
             if (ReadTagsClicked != null) {
@@ -43,7 +41,6 @@ namespace RfidMobile.UI
             IList<Product> products = ProductService.GetProductsBuStockIn(stockIn);
 
             dgProducts.DataSource = products;
-
         }
 
         // ´ò¿ªreader¿Ø¼þ
