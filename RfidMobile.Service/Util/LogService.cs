@@ -10,10 +10,6 @@ namespace RfidMobile.Service.Util
     /// <summary>
     /// 自己实现的简单日志服务，不知道win mobile有没有可以直接使用的日志库
     /// </summary>
-    /// <remarks>
-    /// 2017-3-22 wzl
-    /// 1.0.0 创建 
-    /// </remarks>
     public class LogService
     {
         private static string FileName{get{return GetLogFileName(DateTime.Now);}}

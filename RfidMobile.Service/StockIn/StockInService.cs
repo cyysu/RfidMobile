@@ -11,10 +11,6 @@ namespace RfidMobile.Service.StockIn
     /// <summary>
     /// Èë¿â·þÎñ
     /// </summary>
-    /// <remarks>
-    /// 2017-3-24 wzl
-    /// 1.0.0 
-    /// </remarks>
     public class StockInService
     {
         public static readonly string TAG = "stockIn";

@@ -8,10 +8,6 @@ namespace RfidMobile.Service.Reader
     /// <summary>
     /// 阅读器服务接口
     /// </summary>
-    /// <remarks>
-    /// 2017-3-24 wzl
-    /// 1.0.0
-    /// </remarks>
     public interface IRfidReaderService
     {
         /// <summary>
@@ -22,6 +18,7 @@ namespace RfidMobile.Service.Reader
         /// 当前阅读器连接状态
         /// </summary>
         bool IsConnect { get; set; }
+
         /// <summary>
         /// 连接状态变化事件
         /// </summary>

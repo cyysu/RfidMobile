@@ -10,10 +10,6 @@ namespace RfidMobile.Service.Util
     /// <summary>
     /// 配置信息服务
     /// </summary>
-    /// <remarks>
-    /// 2017-3-24 wzl
-    /// 1.0.0
-    /// </remarks>
     public class ConfigService
     {
         private static readonly string fileName = "config.txt";
