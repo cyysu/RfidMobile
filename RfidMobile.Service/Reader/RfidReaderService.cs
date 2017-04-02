@@ -11,7 +11,7 @@ namespace RfidMobile.Service.Reader
     /// <summary>
     /// Symbol MC319Z RFID¶ÁÈ¡·þÎñ
     /// </summary>
-    public class ReaderService : IRfidReaderService
+    public class RfidReaderService : IRfidReaderService
     {
         private RFIDReader rfidReader;
 
@@ -53,7 +53,7 @@ namespace RfidMobile.Service.Reader
         public event EventHandler<TagDataReceivedEventArgs> TagDataReceived;
         public event EventHandler<MessageReceivedEventArgs> MessageReceived;
 
-        public ReaderService(string host, int port)
+        public RfidReaderService(string host, int port)
         {
             this.host = host;
             this.port = port;

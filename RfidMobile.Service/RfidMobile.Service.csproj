@@ -59,7 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Reader\RfidReaderProductModel.cs" />
+    <Compile Include="Reader\ReaderProductViewModel.cs" />
     <Compile Include="Product\ProductService.cs" />
     <Compile Include="StockIn\MessageReceivedEventArgs.cs" />
     <Compile Include="Util\Config.cs" />

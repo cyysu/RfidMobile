@@ -17,7 +17,7 @@ namespace RfidMobile.UI
 {
     public partial class ReaderControl : UserControl
     {
-        private static ReaderService readerService;
+        private static IRfidReaderService rfidReaderService;
         private IList<ReaderProductViewModel> products;
 
         public ReaderControl(RfidMobile.Service.Util.Config config, IList<Product> products)
@@ -64,22 +64,22 @@ namespace RfidMobile.UI
 
             // 初始化reader服务
 
-            readerService = new ReaderService(config.Host, config.Port);
+            rfidReaderService = new RfidReaderService(config.Host, config.Port);
            
-            readerService.IsConnectChanged += new EventHandler<IsConnectChangedEventArgs>(readerService_IsConnectChanged);
-            readerService.TagDataReceived += new EventHandler<TagDataReceivedEventArgs>(readerService_TagDataReceived);
-            readerService.MessageReceived += new EventHandler<MessageReceivedEventArgs>(readerService_MessageReceived);
+            rfidReaderService.IsConnectChanged += new EventHandler<IsConnectChangedEventArgs>(readerService_IsConnectChanged);
+            rfidReaderService.TagDataReceived += new EventHandler<TagDataReceivedEventArgs>(readerService_TagDataReceived);
+            rfidReaderService.MessageReceived += new EventHandler<MessageReceivedEventArgs>(readerService_MessageReceived);
 
-            chkIsConnect.Checked = readerService.IsConnect;
-            chkIsConnect.Text = readerService.IsConnect ? "开" : "关";
+            chkIsConnect.Checked = rfidReaderService.IsConnect;
+            chkIsConnect.Text = rfidReaderService.IsConnect ? "开" : "关";
         }
 
         public void Start() {
-            readerService.Start();
+            rfidReaderService.Start();
         }
 
         public void Stop() {
-            readerService.Stop();
+            rfidReaderService.Stop();
         }
 
         private void UpdateDgProducts(IList<ReaderProductViewModel> products)
@@ -165,12 +165,12 @@ namespace RfidMobile.UI
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            readerService.Start();
+            rfidReaderService.Start();
         }
 
         private void btnStop_Click(object sender, EventArgs e)
         {
-            readerService.Stop();
+            rfidReaderService.Stop();
         }
 
     }
